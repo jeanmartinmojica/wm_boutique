@@ -4,6 +4,7 @@ import {CartWidget} from "../CartWidget/CartWidget"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLocationDot } from '@fortawesome/free-solid-svg-icons'
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
+import {Link, NavLink} from "react-router-dom"
 
 
 export const NavBar = () =>{
@@ -19,18 +20,21 @@ export const NavBar = () =>{
                 </ul>
             </div>
             <div className="logoDiv">
-                <img className='logo' src={PictureLogo} alt="logo"/>
+                <Link to="/">
+                    <img className='logo' src={PictureLogo} alt="logo"/>
+                </Link>
+                
             </div>
             <div className="cartDiv">
                 <CartWidget/>
             </div>
             <div className="secondOptionsDiv">
                 <ul className='second-list'>
-                    <li><a href="/">Women</a></li>
-                    <li><a href="/">Men</a></li>
-                    <li><a href="/">Denim</a></li>
-                    <li><a href="/">Promotions</a></li>
-                    <li><a href="/">Gift Cards</a></li>
+                    <NavLink className={({isActive})=>isActive === true ? 'classActive' : 'classInactive'} to="/category/women">Women</NavLink>
+                    <NavLink className={({isActive})=>isActive === true ? 'classActive' : 'classInactive'} to="/category/men">Men</NavLink>
+                    <NavLink className={({isActive})=>isActive === true ? 'classActive' : 'classInactive'} to="/category/denim">Denim</NavLink>
+                    <NavLink className={({isActive})=>isActive === true ? 'classActive' : 'classInactive'} to="/promotions">Promotions</NavLink>
+                    <NavLink className={({isActive})=>isActive === true ? 'classActive' : 'classInactive'} to="/giftcards">Gift Cards</NavLink>
                 </ul>
             </div>
         </nav>

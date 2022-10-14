@@ -1,0 +1,22 @@
+.buttonMinus{
+    margin-right: 15px;
+    border-radius: 5px;
+    border-color: #0d3934;
+}
+.buttonPlus{
+    margin-left: 15px;
+    border-radius: 5px;
+}
+.counterContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.counterNumber{
+    font-size: large;
+    margin-top: 15px;
+}
+.fa{
+    width: 20px;
+    height: 20px;
+}

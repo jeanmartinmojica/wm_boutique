@@ -1,41 +1,42 @@
+import { useState, useEffect } from "react"
 import { arrProducts } from "../DataBase/products"
-import { useEffect, useState } from "react"
-import { ItemList } from "../ItemList/ItemList"
-import { useParams } from "react-router-dom"
+import {useParams} from "react-router-dom"
+import {ItemDetail} from "../ItemDetail/ItemDetail"
 import Button from 'react-bootstrap/Button';
 import Spinner from 'react-bootstrap/Spinner';
+import './ItemDetailContainer.css'
 
-export const ItemListContainer = () =>{
+export const ItemDetailContainer = () => {
 
-    /* const categoryName = useParams().categoryName */
-    const {categoryId} = useParams()
+    const {id} = useParams()
 
-    const [products, setProducts] = useState([])
+    const [itemProduct, setItemProduct] = useState({})
 
     const [loading, setLoading] = useState(true);
 
     const getProducts = ()=>{
         return new Promise ((resolve, reject)=>{
             setTimeout(()=>{
-            resolve(arrProducts)
+                resolve(arrProducts)
             },3000)
         })
     }
-
+    
     useEffect(()=>{
-            getProducts().then((result)=>{
-                if(categoryId){
-                    const filteredProducts = result.filter(el=>(el.category === categoryId))
-                    setProducts(filteredProducts)
-                    setLoading(false)
-                }else{
-                    setProducts(result)
-                    setLoading(false)
-                }
+        getProducts().then((result)=>{
+            if(id){
+                const foundProduct = result.find(el=>el.id === parseInt(id))
+                setItemProduct(foundProduct)
+                setLoading(false)
+            }else{
+                setItemProduct(result)
+                setLoading(false)
+            }
         })
-    },[categoryId])
+    },[id])
 
-        return(
+    return(
+        <div className="itemListContainer">
             <div>
                 {loading ? (
                     <div>
@@ -51,8 +52,9 @@ export const ItemListContainer = () =>{
                         </Button>
                     </div>
                 ) : (
-                <ItemList items={products}/>
+                <ItemDetail item={itemProduct}/>
                 )}
             </div>
-        )
-    }
+        </div>
+    )
+}
