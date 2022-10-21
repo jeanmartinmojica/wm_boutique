@@ -26,7 +26,9 @@ export const NavBar = () =>{
                 
             </div>
             <div className="cartDiv">
-                <CartWidget/>
+                <Link to='/cart'>
+                    <CartWidget/>
+                </Link>
             </div>
             <div className="secondOptionsDiv">
                 <ul className='second-list'>
