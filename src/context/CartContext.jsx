@@ -11,7 +11,6 @@ export const CartProvider = ({children}) => {
         return productExists
     }
 
-
     const addProductContext = (item, quantity) =>{
 
         const cartProductsCopy = [...cartProducts]
@@ -54,8 +53,25 @@ export const CartProvider = ({children}) => {
         setCartProducts([])
     }
 
+    const increment = (id)=>{
+        const cartProductsCopy = [...cartProducts]
+        const productPosition = cartProductsCopy.findIndex((ele)=>ele.id === id)
+        cartProductsCopy[productPosition].quantity += 1
+        cartProductsCopy[productPosition].quantityPrice = cartProductsCopy[productPosition].quantity*cartProductsCopy[productPosition].price
+        setCartProducts(cartProductsCopy) 
+    }
+    const decrement = (id)=>{
+        const cartProductsCopy = [...cartProducts]
+        const productPosition = cartProductsCopy.findIndex((ele)=>ele.id === id)
+        if (cartProductsCopy[productPosition].quantity > 1){
+            cartProductsCopy[productPosition].quantity -= 1
+            cartProductsCopy[productPosition].quantityPrice = cartProductsCopy[productPosition].quantity*cartProductsCopy[productPosition].price
+            setCartProducts(cartProductsCopy) 
+        }
+    }
+
     return(
-        <CartContext.Provider value={{cartProducts, addProductContext, getTotalPrice, getTotalProducts, removeProduct, deleteCart}}>
+        <CartContext.Provider value={{cartProducts, addProductContext, getTotalPrice, getTotalProducts, removeProduct, deleteCart, increment, decrement}}>
             {children}
         </CartContext.Provider>
     )
