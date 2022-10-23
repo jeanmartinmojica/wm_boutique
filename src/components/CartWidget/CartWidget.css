@@ -1,4 +1,12 @@
-.fa{
+.fa-2x{
     color:#0d3934;
     height: 30px;
+}
+span{
+    color:#0d3934;
+    font-size: larger;
+    font-weight: 600;
+}
+:any-link {
+    text-decoration: none;
 }

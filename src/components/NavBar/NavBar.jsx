@@ -13,9 +13,9 @@ export const NavBar = () =>{
         <nav className='navegation'>
             <div className="firstOptionsDiv">
                 <ul>
-                    <FontAwesomeIcon className="fa" icon={faLocationDot} />
+                    <FontAwesomeIcon className="fa-2x" icon={faLocationDot} />
                     <li><a href="/">Stores</a></li>
-                    <FontAwesomeIcon className="fa" icon={faWhatsapp} />
+                    <FontAwesomeIcon className="fa-2x" icon={faWhatsapp} />
                     <li><a href="/">WhatsApp</a></li>
                 </ul>
             </div>

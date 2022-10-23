@@ -1,5 +1,7 @@
+import {collection, /* doc */ /* getDoc */ getDocs} from 'firebase/firestore'
+import {db} from '../../utils/firebase'
 import { useState, useEffect } from "react"
-import { arrProducts } from "../DataBase/products"
+//import { arrProducts } from "../DataBase/products"
 import {useParams} from "react-router-dom"
 import {ItemDetail} from "../ItemDetail/ItemDetail"
 import Button from 'react-bootstrap/Button';
@@ -14,7 +16,7 @@ export const ItemDetailContainer = () => {
 
     const [loading, setLoading] = useState(true);
 
-    const getProducts = ()=>{
+    /* const getProducts = ()=>{
         return new Promise ((resolve, reject)=>{
             setTimeout(()=>{
                 resolve(arrProducts)
@@ -25,7 +27,7 @@ export const ItemDetailContainer = () => {
     useEffect(()=>{
         getProducts().then((result)=>{
             if(id){
-                const foundProduct = result.find(el=>el.id === parseInt(id))
+                const foundProduct = result.find(el=>el.id === id)
                 setItemProduct(foundProduct)
                 setLoading(false)
             }else{
@@ -33,6 +35,29 @@ export const ItemDetailContainer = () => {
                 setLoading(false)
             }
         })
+    },[id]) */
+
+    useEffect (()=>{
+        const getProducts = async () =>{
+            const queryRef = collection(db, 'products')
+            const response = await getDocs (queryRef)
+            const documents = response.docs
+            const results = documents.map((element)=>{
+                return({
+                    ...element.data(),
+                    id: element.id
+                })
+            })
+            if(id){
+                const foundProduct = results.find(el=>el.id === id)
+                setItemProduct(foundProduct)
+                setLoading(false)
+            }else{
+                setItemProduct(results)
+                setLoading(false)
+            }
+        }
+        getProducts()
     },[id])
 
     return(

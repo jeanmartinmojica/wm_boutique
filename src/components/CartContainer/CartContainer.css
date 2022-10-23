@@ -1,0 +1,59 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+.cartEmptyContainer img{
+    width: 400px;
+    height: 400px;
+}
+.cartEmptyImg{
+    font-size:x-large;
+}
+.imgCell{
+    width: auto;
+    padding: 5px;
+}
+.imgCell img{
+    width: 120px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.nameCell{
+    width: 200px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.priceCell{
+    width: 200px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.amountCell{
+    width: 100px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.finalPriceCell{
+    width: 150px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.removeCell{
+    width: 50px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.trash{
+    color: #dc3545;
+    cursor: pointer;
+}
+.finalCartContainer{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding: 10px;
+}
+.finalCartContainer p{
+    margin: 10px;
+}
+

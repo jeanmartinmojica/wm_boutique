@@ -6,12 +6,11 @@ export const CartProvider = ({children}) => {
 
     const [cartProducts, setCartProducts] = useState([])
 
-    console.log(cartProducts)
-
     const isInCart = (id) => {
         const productExists = cartProducts.some((element)=>element.id === id)
         return productExists
     }
+
 
     const addProductContext = (item, quantity) =>{
 
@@ -22,6 +21,7 @@ export const CartProvider = ({children}) => {
             cartProductsCopy[productPosition].quantity += quantity
             cartProductsCopy[productPosition].quantityPrice = cartProductsCopy[productPosition].quantity*cartProductsCopy[productPosition].price 
             setCartProducts(cartProductsCopy)
+            //SetEmptyCart(false)
         } else {
             const newProduct = {
                 ...item,
@@ -30,6 +30,7 @@ export const CartProvider = ({children}) => {
             }
             cartProductsCopy.push(newProduct)
             setCartProducts(cartProductsCopy)
+            //SetEmptyCart(false)
         }
         
     }
@@ -50,7 +51,7 @@ export const CartProvider = ({children}) => {
     }
 
     const deleteCart = () => {
-        //setCartProducts([])
+        setCartProducts([])
     }
 
     return(

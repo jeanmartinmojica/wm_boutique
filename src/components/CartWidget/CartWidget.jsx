@@ -10,10 +10,8 @@ export const CartWidget =()=>{
 
     return(
         <div>
-            <FontAwesomeIcon className="fa" icon={faCartShopping}/>
-            <span>
-                {getTotalProducts()}
-            </span>
+            <FontAwesomeIcon className="fa-2x" icon={faCartShopping}/>
+            <span>{getTotalProducts()}</span>
         </div>
     )
 }
