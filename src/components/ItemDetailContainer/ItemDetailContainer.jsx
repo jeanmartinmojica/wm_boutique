@@ -1,7 +1,6 @@
-import {collection, /* doc */ /* getDoc */ getDocs} from 'firebase/firestore'
+import {collection, getDocs} from 'firebase/firestore'
 import {db} from '../../utils/firebase'
 import { useState, useEffect } from "react"
-//import { arrProducts } from "../DataBase/products"
 import {useParams} from "react-router-dom"
 import {ItemDetail} from "../ItemDetail/ItemDetail"
 import Button from 'react-bootstrap/Button';
@@ -15,27 +14,6 @@ export const ItemDetailContainer = () => {
     const [itemProduct, setItemProduct] = useState({})
 
     const [loading, setLoading] = useState(true);
-
-    /* const getProducts = ()=>{
-        return new Promise ((resolve, reject)=>{
-            setTimeout(()=>{
-                resolve(arrProducts)
-            },3000)
-        })
-    }
-    
-    useEffect(()=>{
-        getProducts().then((result)=>{
-            if(id){
-                const foundProduct = result.find(el=>el.id === id)
-                setItemProduct(foundProduct)
-                setLoading(false)
-            }else{
-                setItemProduct(result)
-                setLoading(false)
-            }
-        })
-    },[id]) */
 
     useEffect (()=>{
         const getProducts = async () =>{
@@ -77,7 +55,7 @@ export const ItemDetailContainer = () => {
                         </Button>
                     </div>
                 ) : (
-                <ItemDetail item={itemProduct}/>
+                <ItemDetail itemProduct={itemProduct}/>
                 )}
             </div>
         </div>

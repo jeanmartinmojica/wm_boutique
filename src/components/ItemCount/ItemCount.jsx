@@ -1,12 +1,12 @@
 import {useState} from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlus } from "@fortawesome/free-solid-svg-icons"
-import { faMinus } from "@fortawesome/free-solid-svg-icons"
+import { faCirclePlus } from "@fortawesome/free-solid-svg-icons"
+import { faCircleMinus } from "@fortawesome/free-solid-svg-icons"
 import './ItemCount.css'
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom"
 
-export const ItemCount = ({onAdd}) =>{
+export const ItemCount = ({onAdd, itemProduct}) =>{
 
     const [count, setCount] = useState(1)
     
@@ -26,7 +26,12 @@ export const ItemCount = ({onAdd}) =>{
     }
 
     const increment = ()=>{
-            setCount(count + 1)
+            
+            if (itemProduct.stock > 0 && count < itemProduct.stock){
+                setCount(count + 1)
+                
+            }
+            
     }
     const decrement = ()=>{
             if(count > 1){
@@ -36,9 +41,9 @@ export const ItemCount = ({onAdd}) =>{
     
     return(
         <div className="counterContainer">
-            <button className="buttonMinus" onClick={decrement}><FontAwesomeIcon className="fa" icon={faMinus} /></button>
+            <button className="buttonMinus" onClick={decrement}><FontAwesomeIcon className="fa" icon={faCircleMinus} /></button>
             <p className="counterNumber">{count}</p>
-            <button className="buttonPlus" onClick={increment}><FontAwesomeIcon className="fa" icon={faPlus} /></button>
+            <button className="buttonPlus" onClick={increment}><FontAwesomeIcon className="fa" icon={faCirclePlus} /></button>
             <Button className="buttonAddToCart" variant="success" onClick={()=>{onAdd(count); setGoToCart(true)}}>Add to cart</Button>
         </div>
     )

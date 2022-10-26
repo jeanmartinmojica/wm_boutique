@@ -19,17 +19,17 @@
     padding-right: 10px;
 }
 .nameCell{
-    width: 200px;
+    width: 150px;
     padding-left: 10px;
     padding-right: 10px;
 }
 .priceCell{
-    width: 200px;
+    width: 150px;
     padding-left: 10px;
     padding-right: 10px;
 }
 .amountCell{
-    width: 100px;
+    width: 200px;
     padding-left: 10px;
     padding-right: 10px;
 }
@@ -39,6 +39,11 @@
     padding-right: 10px;
 }
 .removeCell{
+    width: 50px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.stockCell{
     width: 50px;
     padding-left: 10px;
     padding-right: 10px;
@@ -56,4 +61,5 @@
 .finalCartContainer p{
     margin: 10px;
 }
+
 

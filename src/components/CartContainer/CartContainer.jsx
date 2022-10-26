@@ -6,21 +6,20 @@ import './CartContainer.css'
 import Button from 'react-bootstrap/Button'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
-import { faPlus } from "@fortawesome/free-solid-svg-icons"
-import { faMinus } from "@fortawesome/free-solid-svg-icons"
+import { faCirclePlus } from "@fortawesome/free-solid-svg-icons"
+import { faCircleMinus } from "@fortawesome/free-solid-svg-icons"
 
 
 export const CartContainer = () => {
 
     const {cartProducts, getTotalPrice, removeProduct, deleteCart, increment, decrement} = useContext(CartContext)
 
-    
     if (cartProducts.length === 0){
         return (
             <div className="cartEmptyContainer">
                 <div className="cartEmptyImg">
                     <img src={CartEmptyImg} alt="" />
-                    <p>There is not products here</p>
+                    <p>There are not products here</p>
                 </div>
                 <div>
                     <Link to={"/"}><Button variant="success">Go To Shopping</Button></Link>
@@ -43,10 +42,11 @@ export const CartContainer = () => {
                                     <td className="nameCell">{product.title}</td>
                                     <td className="priceCell">Unite Price: ${product.price}</td>
                                     <td className="amountCell">
-                                        <button className="buttonMinus" onClick={()=>decrement(product.id)}><FontAwesomeIcon className="fa" icon={faMinus} /></button>
+                                        <button className="buttonMinus" onClick={()=>decrement(product.id)}><FontAwesomeIcon className="fa" icon={faCircleMinus}/></button>
                                         Amount: {product.quantity}
-                                        <button className="buttonPlus" onClick={()=>increment(product.id)}><FontAwesomeIcon className="fa" icon={faPlus} /></button>
+                                        <button className="buttonPlus" onClick={()=>increment(product.id)}><FontAwesomeIcon className="fa" icon={faCirclePlus} /></button>
                                     </td>
+                                    <td className="stockCell">Stock: {product.stock}</td>
                                     <td className="finalPriceCell">Final Price: ${product.quantityPrice}</td>
                                     <td><FontAwesomeIcon onClick={()=>removeProduct(product.id)} className="fa trash" icon={faTrash}/>
                                     </td>

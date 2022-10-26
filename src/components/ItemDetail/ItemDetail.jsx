@@ -1,14 +1,17 @@
 import { ItemCount } from "../ItemCount/ItemCount"
 import Card from "react-bootstrap/Card";
-import { useContext } from "react";
+import { useContext, useState} from "react";
 import { CartContext } from "../../context/CartContext";
 
-export const ItemDetail = ({item}) => {
+export const ItemDetail = ({itemProduct}) => {
 
     const {addProductContext} = useContext(CartContext)
 
+    const [newStock, setNewStock] = useState (itemProduct.stock)
+
     const addProduct = (quantity)=>{
-        addProductContext(item, quantity)
+        setNewStock(itemProduct.stock - quantity)
+        addProductContext(itemProduct, quantity)
     }
 
     return(
@@ -16,11 +19,12 @@ export const ItemDetail = ({item}) => {
             <Card style={{ width: "18rem"}}>
             <Card.Img
                 variant="top"
-                src={item.pictureUrl}/>
+                src={itemProduct.pictureUrl}/>
                 <Card.Body>
-                <Card.Title>{item.title}</Card.Title>
-                <Card.Text>{`${item.price} USD`}</Card.Text>
-                <ItemCount onAdd={addProduct}/>
+                <Card.Title>{itemProduct.title}</Card.Title>
+                <Card.Text>{`${itemProduct.price} USD`}</Card.Text>
+                <Card.Text>{`On Stock: ${newStock}`}</Card.Text>
+                <ItemCount onAdd={addProduct} itemProduct={itemProduct}/>
                 </Card.Body>
                 </Card>
         
