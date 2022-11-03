@@ -40,11 +40,16 @@ export const ItemCount = ({onAdd, itemProduct}) =>{
     }
     
     return(
-        <div className="counterContainer">
-            <button className="buttonMinus" onClick={decrement}><FontAwesomeIcon className="fa" icon={faCircleMinus} /></button>
-            <p className="counterNumber">{count}</p>
-            <button className="buttonPlus" onClick={increment}><FontAwesomeIcon className="fa" icon={faCirclePlus} /></button>
-            <Button className="buttonAddToCart" variant="success" onClick={()=>{onAdd(count); setGoToCart(true)}}>Add to cart</Button>
+        <div>
+            {itemProduct.stock>0 ? 
+                <div className="counterContainer">
+                    <button className="buttonMinus" onClick={decrement}><FontAwesomeIcon className="fa" icon={faCircleMinus} /></button>
+                    <p className="counterNumber">{count}</p>
+                    <button className="buttonPlus" onClick={increment}><FontAwesomeIcon className="fa" icon={faCirclePlus} /></button>
+                    <Button className="buttonAddToCart" variant="success" onClick={()=>{onAdd(count); setGoToCart(true)}}>Add to cart</Button>
+                </div>
+                : <Link to={'/'}><Button className="goToShopping" variant="success">Go To Shopping</Button></Link>
+            }
         </div>
     )
 }

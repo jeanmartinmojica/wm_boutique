@@ -3,8 +3,8 @@ import {db} from '../../utils/firebase'
 import { useEffect, useState } from "react"
 import { ItemList } from "../ItemList/ItemList"
 import { useParams } from "react-router-dom"
-import Button from 'react-bootstrap/Button';
 import Spinner from 'react-bootstrap/Spinner';
+import './ItemListContainer.css'
 
 export const ItemListContainer = () =>{
 
@@ -40,17 +40,8 @@ export const ItemListContainer = () =>{
         return(
             <div>
                 {loading ? (
-                    <div>
-                        <Button variant="primary" disabled>
-                        <Spinner
-                            as="span"
-                            animation="grow"
-                            size="sm"
-                            role="status"
-                            aria-hidden="true"
-                        />
-                        Loading...
-                        </Button>
+                    <div className='spinner'>
+                        <Spinner animation="border" variant="success" />
                     </div>
                 ) : (
                 <ItemList items={products}/>

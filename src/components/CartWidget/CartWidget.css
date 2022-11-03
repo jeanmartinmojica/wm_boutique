@@ -1,9 +1,15 @@
 .fa-2x{
-    color:#0d3934;
+    color:#198754;
     height: 30px;
 }
+.cartWidget{
+    display: flex;
+}
+.totalProducts{
+    width: 10px;
+}
 span{
-    color:#0d3934;
+    color:#198754;
     font-size: larger;
     font-weight: 600;
 }

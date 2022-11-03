@@ -3,7 +3,6 @@ import {db} from '../../utils/firebase'
 import { useState, useEffect } from "react"
 import {useParams} from "react-router-dom"
 import {ItemDetail} from "../ItemDetail/ItemDetail"
-import Button from 'react-bootstrap/Button';
 import Spinner from 'react-bootstrap/Spinner';
 import './ItemDetailContainer.css'
 
@@ -42,17 +41,8 @@ export const ItemDetailContainer = () => {
         <div className="itemListContainer">
             <div>
                 {loading ? (
-                    <div>
-                        <Button variant="primary" disabled>
-                        <Spinner
-                            as="span"
-                            animation="grow"
-                            size="sm"
-                            role="status"
-                            aria-hidden="true"
-                        />
-                        Loading...
-                        </Button>
+                    <div className='spinner'>
+                        <Spinner animation="border" variant="success" />
                     </div>
                 ) : (
                 <ItemDetail itemProduct={itemProduct}/>

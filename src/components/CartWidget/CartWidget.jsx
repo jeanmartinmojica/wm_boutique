@@ -9,9 +9,12 @@ export const CartWidget =()=>{
     const {getTotalProducts} = useContext(CartContext)
 
     return(
-        <div>
+        <div className="cartWidget">
             <FontAwesomeIcon className="fa-2x" icon={faCartShopping}/>
-            <span>{getTotalProducts()}</span>
+            <div className="totalProducts">
+                <span>{getTotalProducts()}</span>
+            </div>
+            
         </div>
     )
 }

@@ -1,12 +1,14 @@
 .buttonMinus{
     margin-right: 15px;
     border: none;
-    color: #1183ca;
+    color: #198754;
+    background-color: transparent;
 }
 .buttonPlus{
     margin-left: 15px;
     border: none;
-    color: #1183ca;
+    color: #198754;
+    background-color: transparent;
 }
 .counterContainer{
     display: flex;
@@ -27,4 +29,56 @@
 }
 .secondaryButtons{
     display: flex;
+}
+.form{
+    background-color: #fff;
+    margin: auto;
+    width: 90%;
+    max-width: 400px;
+    padding: 4.5em 3em;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px -5px rgb(0, 0, 0 / 30%);
+    text-align: center;
+}
+.formTitle{
+    margin-bottom: .5em;
+    background-color: #fff;
+}
+.formContainer{
+    margin-top: 3em;
+    display: grid;
+    gap: 2.5em;
+    background-color: #fff;
+}
+.formGroup{
+    position: relative;
+    --color: #5757577e;
+}
+.formInput{
+    width: 100%;
+    background: none;
+    color: #706c6c;
+    padding: .6em .3em;
+    font-size: 1rem;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid var(--color);
+    background-color: #fff;
+}
+.formInput:focus + .formLabel{
+    transform: translateY(-12px) scale(.7);
+    transform-origin: left top;
+    color: #3866f2;
+}
+.formLabel{
+    color: var(--color);
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 5px;
+    transform: translateY(10px);
+    transition: transform .5s, color .3s;
+}
+label{
+    background-color: #fff;
 }
